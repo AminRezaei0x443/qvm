@@ -1,0 +1,1 @@
+go build -o lib_test.so -buildmode=c-shared ./plugin.go

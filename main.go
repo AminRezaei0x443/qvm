@@ -34,5 +34,6 @@ func main() {
 		context.EvaluateFile(n)
 	}
 	context.EvaluateFile("js_tests/test.js")
+	context.EvaluateFile("plugin_test/lib_test.js")
 	fmt.Println()
 }
