@@ -33,6 +33,7 @@ func main() {
 		n := os.Args[1]
 		context.EvaluateFile(n)
 	}
+	context.Globals().Set("testBuf", context.NewArrayBuf([]byte{1, 2, 3}))
 	context.EvaluateFile("js_tests/test.js")
 	context.EvaluateFile("plugin_test/lib_test.js")
 	fmt.Println()
