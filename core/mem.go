@@ -30,3 +30,7 @@ func AppendObject(obj interface{}) *StoredObject {
 func (o StoredObject) Get() interface{} {
 	return globalStore.objs[o.key]
 }
+
+func (o StoredObject) Remove() {
+	delete(globalStore.objs, o.key)
+}

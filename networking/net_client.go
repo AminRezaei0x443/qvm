@@ -11,7 +11,11 @@ import (
 )
 
 func InitHttpClass(ctx *quickjs.Context) quickjs.Value {
-	httpCls := ctx.NewClass("HttpClient", nil)
+	var httpCls *quickjs.Class
+	httpCls = ctx.NewClass("HttpClient", func(rt *quickjs.Runtime, val quickjs.Value) {
+		so := (*core.StoredObject)(val.GetOpaque(httpCls.Id()))
+		so.Remove()
+	})
 	clsObj := httpCls.DefConstructor(func(ctx *quickjs.Context, this quickjs.Value, args []quickjs.Value) quickjs.Value {
 		if len(args) < 2 {
 			return ctx.ThrowError(errors.New("args < 2"))
